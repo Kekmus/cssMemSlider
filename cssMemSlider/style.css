@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-style: serif;
 }
 
 .wrapper {
@@ -39,17 +40,34 @@
   grid-column: span 2;
 }
 
-.slide-1 { 
-  background-image: url(./assets/cat-1.jpg); 
+.slider__img {
+  width: 512px;
+  height: 512px;
+  opacity: 0;
+  z-index: 0;
+  position: absolute;
+  transition: transform ease-in-out .3s, opacity ease-in-out .3s;
 }
-.slide-2 { 
+
+.slider__img-1 { 
+  background-image: url(./assets/cat-1.jpg);
+  border-radius: 10px;
+  background-size: cover
+}
+.slider__img-2 { 
   background-image: url(./assets/cat-2.jpg);
+  border-radius: 10px;
+  background-size: cover
 }
-.slide-3 { 
+.slider__img-3 { 
   background-image: url(./assets/cat-3.jpg);
+  border-radius: 10px;
+  background-size: cover
 }
-.slide-4 { 
+.slider__img-4 { 
   background-image: url(./assets/cat-4.jpg);
+  border-radius: 10px;
+  background-size: cover
 }
 
 .wrapper .description {
@@ -104,20 +122,10 @@ label:hover .kek,
 	background: #ddd;
 }
 
-.slides {
-  width: 512px;
-  height: 512px;
-  opacity: 0;
-  z-index: 0;
-  position: absolute;
-  transition: transform ease-in-out .3s, opacity ease-in-out .3s;
-
-}
-
-#slide-1:checked ~ .slider > .slider__imgs > .slide-1,
-#slide-2:checked ~ .slider > .slider__imgs > .slide-2,
-#slide-3:checked ~ .slider > .slider__imgs > .slide-3,
-#slide-4:checked ~ .slider > .slider__imgs > .slide-4 {
+#slide-1:checked ~ .slider > .slider__imgs > .slider__img-1,
+#slide-2:checked ~ .slider > .slider__imgs > .slider__img-2,
+#slide-3:checked ~ .slider > .slider__imgs > .slider__img-3,
+#slide-4:checked ~ .slider > .slider__imgs > .slider__img-4 {
   opacity: 1;
 	z-index: 1;
   transition: transform ease-in-out .5s, opacity ease-in-out .5s;
@@ -130,4 +138,61 @@ label:hover .kek,
   opacity: 1;
 	z-index: 1;
   transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+}
+
+@media (max-width: 767px) {
+  .slider {
+    width:276px;
+    height:370px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 256px 30px auto;
+    row-gap: 10px;
+    grid-template-areas:
+    "img"
+    "controls"
+    "description";
+  }
+
+  .slider > .slider__imgs {
+    height: 256px;
+    width: 256px;
+    grid-column: span 1;
+    grid-area: img;
+  }
+
+  .slider__img {
+    width: 256px;
+    height: 256px;
+  }
+
+  .wrapper .description {
+    font-size: 16px;
+    grid-area: description;
+  }
+
+  .wrapper .controls {
+    text-align: center;
+    grid-area: controls;
+  }
+  
+  .controls label {
+    display: inline-block;
+    position: relative;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+  
+  .kek {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    top: 7px;
+    right: 9px;
+    border-radius: 50%;
+    transition: background ease-in-out .5s;
+    padding: 5px;
+  }
 }
