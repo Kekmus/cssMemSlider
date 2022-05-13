@@ -90,35 +90,30 @@
   cursor: pointer;
 }
 
-.kek {
-  display: inline-block;
-	position: relative;
+.control__border {
+  display: flex;
   cursor: pointer;
-  top: 7px;
-  right: 9px;
-  border-radius: 50%;
-	transition: background ease-in-out .5s;
-  padding: 5px;
+  border: 2px solid greenyellow;
+	height: 18px;
+	width: 18px;
+	border-radius: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
-.controls .kek:after {
+.control__inner {
   cursor: pointer;
-	border: 2px solid greenyellow;
-	content: " ";
-	display: block;
-	height: 14px;
-	left: -4px;
-	position: absolute;
-	top: -4px;
-	width: 14px;
+  display: block;
+	height: 10px;
+	width: 10px;
 	border-radius: 50%;
 }
 
-label:hover .kek, 
-#slide-1:checked ~ .slider > .controls > label:nth-of-type(1) .kek,
-#slide-2:checked ~ .slider > .controls > label:nth-of-type(2) .kek,
-#slide-3:checked ~ .slider > .controls > label:nth-of-type(3) .kek,
-#slide-4:checked ~ .slider > .controls > label:nth-of-type(4) .kek{
+label:hover .control__border .control__inner, 
+#slide-1:checked ~ .slider > .controls > label:nth-of-type(1) .control__border .control__inner,
+#slide-2:checked ~ .slider > .controls > label:nth-of-type(2) .control__border .control__inner,
+#slide-3:checked ~ .slider > .controls > label:nth-of-type(3) .control__border .control__inner,
+#slide-4:checked ~ .slider > .controls > label:nth-of-type(4) .control__border .control__inner{
 	background: #ddd;
 }
 
@@ -185,7 +180,7 @@ label:hover .kek,
     cursor: pointer;
   }
   
-  .kek {
+  .control__border {
     display: inline-block;
     position: relative;
     cursor: pointer;
