@@ -1,3 +1,121 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #069;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+	width:552px;
+  height:600px;
+  background-color: red;
+  overflow: hidden;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 512px auto;
+  row-gap: 20px;
+}
+
+.wrapper > input {
+	display: none;
+}
+
+.slider > .slider__imgs {
+  height: 512px;
+  margin: 0 auto;
+  grid-column: span 2;
+}
+
+.slide-1 { 
+  background-image: url(./assets/cat-1.jpg); 
+}
+.slide-2 { 
+  background-image: url(./assets/cat-2.jpg);
+}
+.slide-3 { 
+  background-image: url(./assets/cat-3.jpg);
+}
+.slide-4 { 
+  background-image: url(./assets/cat-4.jpg);
+}
+
+.wrapper .description {
+  display: none;
+  font-size: 24px;
+}
+
+.wrapper .controls {
+  text-align: end;
+}
+
+.controls label {
+  display: inline-block;
+	position: relative;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.kek {
+  display: inline-block;
+	position: relative;
+  cursor: pointer;
+  top: 7px;
+  right: 9px;
+  border-radius: 50%;
+	transition: background ease-in-out .5s;
+  padding: 5px;
+}
+
+.controls .kek:after {
+  cursor: pointer;
+	border: 2px solid greenyellow;
+	content: " ";
+	display: block;
+	height: 14px;
+	left: -4px;
+	position: absolute;
+	top: -4px;
+	width: 14px;
+	border-radius: 50%;
+}
+
+label:hover .kek, 
+#slide-1:checked ~ .slider > .controls > label:nth-of-type(1) .kek,
+#slide-2:checked ~ .slider > .controls > label:nth-of-type(2) .kek,
+#slide-3:checked ~ .slider > .controls > label:nth-of-type(3) .kek,
+#slide-4:checked ~ .slider > .controls > label:nth-of-type(4) .kek{
+	background: #ddd;
+}
+
+.slides {
+  display: none;
+  width: 512px;
+  height: 512px;
+}
+
+#slide-1:checked ~ .slider > .slider__imgs > .slide-1,
+#slide-2:checked ~ .slider > .slider__imgs > .slide-2,
+#slide-3:checked ~ .slider > .slider__imgs > .slide-3,
+#slide-4:checked ~ .slider > .slider__imgs > .slide-4 {
+  display: block;
+}
+
+#slide-1:checked ~ .slider > .descriptions > .description-1,
+#slide-2:checked ~ .slider > .descriptions > .description-2,
+#slide-3:checked ~ .slider > .descriptions > .description-3,
+#slide-4:checked ~ .slider > .descriptions > .description-4 {
+  display: block;
 }
