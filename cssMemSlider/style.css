@@ -34,6 +34,7 @@
 
 .slider > .slider__imgs {
   height: 512px;
+  width: 512px;
   margin: 0 auto;
   grid-column: span 2;
 }
@@ -52,8 +53,11 @@
 }
 
 .wrapper .description {
-  display: none;
+  position: absolute;
   font-size: 24px;
+  opacity: 0;
+  z-index: 0;
+  transition: transform ease-in-out .3s, opacity ease-in-out .3s;
 }
 
 .wrapper .controls {
@@ -101,21 +105,29 @@ label:hover .kek,
 }
 
 .slides {
-  display: none;
   width: 512px;
   height: 512px;
+  opacity: 0;
+  z-index: 0;
+  position: absolute;
+  transition: transform ease-in-out .3s, opacity ease-in-out .3s;
+
 }
 
 #slide-1:checked ~ .slider > .slider__imgs > .slide-1,
 #slide-2:checked ~ .slider > .slider__imgs > .slide-2,
 #slide-3:checked ~ .slider > .slider__imgs > .slide-3,
 #slide-4:checked ~ .slider > .slider__imgs > .slide-4 {
-  display: block;
+  opacity: 1;
+	z-index: 1;
+  transition: transform ease-in-out .5s, opacity ease-in-out .5s;
 }
 
 #slide-1:checked ~ .slider > .descriptions > .description-1,
 #slide-2:checked ~ .slider > .descriptions > .description-2,
 #slide-3:checked ~ .slider > .descriptions > .description-3,
 #slide-4:checked ~ .slider > .descriptions > .description-4 {
-  display: block;
+  opacity: 1;
+	z-index: 1;
+  transition: transform ease-in-out .5s, opacity ease-in-out .5s;
 }
