@@ -1,8 +1,16 @@
+:root {
+  --main-background-color: #25251b;
+  --slider-background-color: #303325;
+  --text-color: #d6b11d;
+  --control-border-color: #d6b11d;
+  --control-active-color: #5b7249;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-style: serif;
+  font-family: 'Georgia', sans-serif;
 }
 
 .wrapper {
@@ -12,7 +20,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #069;
+  background-color: var(--main-background-color);
   overflow: hidden;
   position: relative;
 }
@@ -20,13 +28,15 @@
 .slider {
 	width:552px;
   height:600px;
-  background-color: red;
+  background-color: var(--slider-background-color);
   overflow: hidden;
   padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 512px auto;
   row-gap: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 13px 10px rgba(0,0,0,0.25);
 }
 
 .wrapper > input {
@@ -51,22 +61,22 @@
 
 .slider__img-1 { 
   background-image: url(./assets/cat-1.jpg);
-  border-radius: 10px;
+  border-radius: 20px;
   background-size: cover
 }
 .slider__img-2 { 
   background-image: url(./assets/cat-2.jpg);
-  border-radius: 10px;
+  border-radius: 20px;
   background-size: cover
 }
 .slider__img-3 { 
   background-image: url(./assets/cat-3.jpg);
-  border-radius: 10px;
+  border-radius: 20px;
   background-size: cover
 }
 .slider__img-4 { 
   background-image: url(./assets/cat-4.jpg);
-  border-radius: 10px;
+  border-radius: 20px;
   background-size: cover
 }
 
@@ -75,6 +85,7 @@
   font-size: 24px;
   opacity: 0;
   z-index: 0;
+  color: var(--text-color);
   transition: transform ease-in-out .3s, opacity ease-in-out .3s;
 }
 
@@ -93,7 +104,7 @@
 .control__border {
   display: flex;
   cursor: pointer;
-  border: 2px solid greenyellow;
+  border: 2px solid var(--control-border-color);
 	height: 18px;
 	width: 18px;
 	border-radius: 50%;
@@ -114,7 +125,7 @@ label:hover .control__border .control__inner,
 #slide-2:checked ~ .slider > .controls > label:nth-of-type(2) .control__border .control__inner,
 #slide-3:checked ~ .slider > .controls > label:nth-of-type(3) .control__border .control__inner,
 #slide-4:checked ~ .slider > .controls > label:nth-of-type(4) .control__border .control__inner{
-	background: #ddd;
+	background: var(--control-active-color);
 }
 
 #slide-1:checked ~ .slider > .slider__imgs > .slider__img-1,
@@ -133,6 +144,10 @@ label:hover .control__border .control__inner,
   opacity: 1;
 	z-index: 1;
   transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+}
+
+.description {
+  text-shadow: 2px -1px 1px var(--control-active-color);
 }
 
 @media (max-width: 767px) {
@@ -170,24 +185,5 @@ label:hover .control__border .control__inner,
   .wrapper .controls {
     text-align: center;
     grid-area: controls;
-  }
-  
-  .controls label {
-    display: inline-block;
-    position: relative;
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-  }
-  
-  .control__border {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    top: 7px;
-    right: 9px;
-    border-radius: 50%;
-    transition: background ease-in-out .5s;
-    padding: 5px;
   }
 }
